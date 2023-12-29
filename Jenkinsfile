@@ -10,7 +10,7 @@ pipeline {
         stage('Git checkout') {
             steps {
                 echo 'Cloning project codebase...'
-                git branch: 'main', url: 'https://github.com/cvamsikrishna11/devops-fully-automated-infra.git'
+                git branch: 'main', url: 'https://github.com/moishimwe/TF-fully-automated-infra-vrf.git'
                 sh 'ls'
             }
         }
@@ -81,22 +81,22 @@ pipeline {
             }
         }
         
-         stage('Terraform destroy') {
-             steps {
-                echo 'Terraform destroy...'                             
-                 sh 'sudo terraform destroy --auto-approve'
+        // stage('Terraform destroy') {
+          //   steps {
+               // echo 'Terraform destroy...'                             
+              //   sh 'sudo terraform destroy --auto-approve'
                
-             }
-         }
+           //  }
+         //}
         
     }
     
-     post { 
-        always { 
-            echo 'I will always say Hello again!'
-            slackSend channel: '#team-devops', color: COLOR_MAP[currentBuild.currentResult], message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
-        }
-    }
+    // post { 
+      //  always { 
+          //  echo 'I will always say Hello again!'
+          //  slackSend channel: '#team-devops', color: COLOR_MAP[currentBuild.currentResult], message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+       // }
+    //}
     
     
     
